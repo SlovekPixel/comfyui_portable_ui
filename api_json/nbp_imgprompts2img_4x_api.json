@@ -1,0 +1,193 @@
+{
+  "766": {
+    "inputs": {
+      "image": "default_photosessia.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Base image 1"
+    }
+  },
+  "768": {
+    "inputs": {
+      "image": "morda (1).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Base image 2"
+    }
+  },
+  "784": {
+    "inputs": {
+      "value": "C://"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "Folder to Save"
+    }
+  },
+  "782": {
+    "inputs": {
+      "images.image0": [
+        "766",
+        0
+      ],
+      "images.image1": [
+        "768",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images"
+    }
+  },
+  "787": {
+    "inputs": {
+      "prompt": "1111",
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "782",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [1]"
+    }
+  },
+  "790": {
+    "inputs": {
+      "filename_prefix": "funnel",
+      "output_folder": [
+        "784",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "787",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [1]"
+    }
+  },
+  "791": {
+    "inputs": {
+      "filename_prefix": "funnel",
+      "output_folder": [
+        "784",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "792",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [2]"
+    }
+  },
+  "792": {
+    "inputs": {
+      "prompt": "3333",
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "782",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [2]"
+    }
+  },
+  "793": {
+    "inputs": {
+      "filename_prefix": "funnel",
+      "output_folder": [
+        "784",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "794",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [4]"
+    }
+  },
+  "794": {
+    "inputs": {
+      "prompt": "4444",
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "782",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [4]"
+    }
+  },
+  "795": {
+    "inputs": {
+      "filename_prefix": "funnel",
+      "output_folder": [
+        "784",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "796",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [3]"
+    }
+  },
+  "796": {
+    "inputs": {
+      "prompt": "2222",
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "782",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [3]"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "76": {
+    "inputs": {
+      "model": "ema_vae_fp16.safetensors",
+      "device": "cuda:0",
+      "encode_tiled": true,
+      "encode_tile_size": 1024,
+      "encode_tile_overlap": 128,
+      "decode_tiled": true,
+      "decode_tile_size": 1024,
+      "decode_tile_overlap": 128,
+      "tile_debug": "false",
+      "offload_device": "none",
+      "cache_model": false
+    },
+    "class_type": "SeedVR2LoadVAEModel",
+    "_meta": {
+      "title": "SeedVR2 (Down)Load VAE Model"
+    }
+  },
+  "77": {
+    "inputs": {
+      "seed": 3515015570,
+      "resolution": [
+        "90",
+        0
+      ],
+      "max_resolution": 0,
+      "batch_size": 1,
+      "uniform_batch_size": false,
+      "color_correction": "lab",
+      "temporal_overlap": 0,
+      "prepend_frames": 0,
+      "input_noise_scale": 0,
+      "latent_noise_scale": 0,
+      "offload_device": "cpu",
+      "enable_debug": false,
+      "image": [
+        "85",
+        0
+      ],
+      "dit": [
+        "79",
+        0
+      ],
+      "vae": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "SeedVR2VideoUpscaler",
+    "_meta": {
+      "title": "SeedVR2 Video Upscaler (v2.5.24)"
+    }
+  },
+  "79": {
+    "inputs": {
+      "model": "seedvr2_ema_7b_fp8_e4m3fn_mixed_block35_fp16.safetensors",
+      "device": "cuda:0",
+      "blocks_to_swap": 0,
+      "swap_io_components": true,
+      "offload_device": "cpu",
+      "cache_model": false,
+      "attention_mode": "sageattn_2"
+    },
+    "class_type": "SeedVR2LoadDiTModel",
+    "_meta": {
+      "title": "SeedVR2 (Down)Load DiT Model"
+    }
+  },
+  "80": {
+    "inputs": {
+      "image": "842ed7ea23accd068f1040eb7d4d0456a885140759988c4cb6851a40b12abc5e.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "83": {
+    "inputs": {
+      "value": 3000
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "WIDTH SCALE"
+    }
+  },
+  "84": {
+    "inputs": {
+      "model_name": "1x-ITF-SkinDiffDetail-Lite-v1.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "85": {
+    "inputs": {
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "min_overlap": "1/8 Tile",
+      "min_scale_factor": [
+        "88",
+        0
+      ],
+      "tile_order": "spiral",
+      "scaling_method": "lanczos",
+      "use_upscale_with_model": false,
+      "image": [
+        "80",
+        0
+      ],
+      "upscale_model": [
+        "84",
+        0
+      ]
+    },
+    "class_type": "Divide and Conquer Algorithm",
+    "_meta": {
+      "title": "Divide and Conquer Algorithm"
+    }
+  },
+  "87": {
+    "inputs": {
+      "image": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "88": {
+    "inputs": {
+      "expression": "b/a",
+      "values.a": [
+        "87",
+        0
+      ],
+      "values.b": [
+        "83",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "90": {
+    "inputs": {
+      "image": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "91": {
+    "inputs": {
+      "filename_prefix": "upscaled",
+      "format": "png",
+      "format.bit_depth": "8-bit",
+      "format.input_color_space": "sRGB",
+      "images": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "SaveImageAdvanced",
+    "_meta": {
+      "title": "Save Image (Advanced)"
+    }
+  }
+}

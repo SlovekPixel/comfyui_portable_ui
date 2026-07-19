@@ -1,0 +1,386 @@
+{
+  "22": {
+    "inputs": {
+      "mode": "single_image",
+      "seed": 0,
+      "index": 0,
+      "label": "",
+      "path": [
+        "23",
+        0
+      ],
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "false"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch [1]"
+    }
+  },
+  "23": {
+    "inputs": {
+      "value": "C:\\Users\\cofch\\Desktop\\dsds\\voronka"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "input_folder_path_second"
+    }
+  },
+  "24": {
+    "inputs": {
+      "filename_prefix": [
+        "22",
+        1
+      ],
+      "output_folder": [
+        "26",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "83",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [1]"
+    }
+  },
+  "25": {
+    "inputs": {
+      "value": "results_fold"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "folder_results"
+    }
+  },
+  "26": {
+    "inputs": {
+      "string_a": [
+        "23",
+        0
+      ],
+      "string_b": [
+        "25",
+        0
+      ],
+      "delimiter": "\\"
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "27": {
+    "inputs": {
+      "mode": "single_image",
+      "seed": 0,
+      "index": 1,
+      "label": "",
+      "path": [
+        "23",
+        0
+      ],
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "false"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch [2]"
+    }
+  },
+  "28": {
+    "inputs": {
+      "filename_prefix": [
+        "27",
+        1
+      ],
+      "output_folder": [
+        "26",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [2]"
+    }
+  },
+  "30": {
+    "inputs": {
+      "mode": "single_image",
+      "seed": 0,
+      "index": 2,
+      "label": "",
+      "path": [
+        "23",
+        0
+      ],
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "false"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch [3]"
+    }
+  },
+  "31": {
+    "inputs": {
+      "filename_prefix": [
+        "30",
+        1
+      ],
+      "output_folder": [
+        "26",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "87",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [3]"
+    }
+  },
+  "33": {
+    "inputs": {
+      "mode": "single_image",
+      "seed": 0,
+      "index": 3,
+      "label": "",
+      "path": [
+        "23",
+        0
+      ],
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "false"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch [4]"
+    }
+  },
+  "34": {
+    "inputs": {
+      "filename_prefix": [
+        "33",
+        1
+      ],
+      "output_folder": [
+        "26",
+        0
+      ],
+      "caption_file_extension": ".png",
+      "images": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "SaveImageKJ",
+    "_meta": {
+      "title": "Save image [4]"
+    }
+  },
+  "47": {
+    "inputs": {
+      "value": "1111prompt"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "80": {
+    "inputs": {
+      "mode": "single_image",
+      "seed": 0,
+      "index": 0,
+      "label": "",
+      "path": [
+        "81",
+        0
+      ],
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "false"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch [first]"
+    }
+  },
+  "81": {
+    "inputs": {
+      "value": "C:\\Users\\cofch\\Desktop\\dsds\\jeans"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "input_folder_path_first"
+    }
+  },
+  "82": {
+    "inputs": {
+      "images.image0": [
+        "80",
+        0
+      ],
+      "images.image1": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images [1]"
+    }
+  },
+  "83": {
+    "inputs": {
+      "prompt": [
+        "47",
+        0
+      ],
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "82",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [1]"
+    }
+  },
+  "84": {
+    "inputs": {
+      "images.image0": [
+        "80",
+        0
+      ],
+      "images.image1": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images [2]"
+    }
+  },
+  "85": {
+    "inputs": {
+      "prompt": [
+        "47",
+        0
+      ],
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "84",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [2]"
+    }
+  },
+  "86": {
+    "inputs": {
+      "images.image0": [
+        "80",
+        0
+      ],
+      "images.image1": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images [3]"
+    }
+  },
+  "87": {
+    "inputs": {
+      "prompt": [
+        "47",
+        0
+      ],
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "86",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [3]"
+    }
+  },
+  "88": {
+    "inputs": {
+      "images.image0": [
+        "80",
+        0
+      ],
+      "images.image1": [
+        "33",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images [4]"
+    }
+  },
+  "89": {
+    "inputs": {
+      "prompt": [
+        "47",
+        0
+      ],
+      "model": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "seed": 42,
+      "aspect_ratio": "3:4",
+      "resolution": "2K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "",
+      "images": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image) [4]"
+    }
+  }
+}

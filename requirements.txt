@@ -1,0 +1,6 @@
+# Прямые зависимости web-приложения (версии из portable Python окружения)
+gradio==6.18.0
+requests==2.32.5
+python-dotenv==1.2.2
+Pillow==12.1.1
+numpy==2.4.3
