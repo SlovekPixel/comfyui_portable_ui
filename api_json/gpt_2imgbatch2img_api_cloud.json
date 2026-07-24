@@ -1,0 +1,76 @@
+{
+  "6": {
+    "inputs": {
+      "prompt": "перекрась белую водолазку в цвет на второй водолазке, не делай цвет ярче или бледнее, сделай точно такой же",
+      "model": "gpt-image-2",
+      "model.size": "auto",
+      "model.custom_width": [
+        "12",
+        0
+      ],
+      "model.custom_height": [
+        "12",
+        1
+      ],
+      "model.background": "auto",
+      "model.quality": "low",
+      "n": 1,
+      "seed": 610837673,
+      "model.images.image_1": [
+        "9",
+        0
+      ],
+      "model.images.image_2": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "OpenAIGPTImageNodeV2",
+    "_meta": {
+      "title": "OpenAI GPT Image 2"
+    }
+  },
+  "9": {
+    "inputs": {
+      "image": "2553e72dcb9b54efa66f621dabe81f30afd233c04b81ef6f37e8c6aaa39459da.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image 1 (original)"
+    }
+  },
+  "10": {
+    "inputs": {
+      "image": "dfa1d1360a6ab621d764306696316913e9277d8c4cea69cf1a8305db0a955d48.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image 2"
+    }
+  },
+  "11": {
+    "inputs": {
+      "filename_prefix": "ChatGPTPT",
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "12": {
+    "inputs": {
+      "image": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  }
+}

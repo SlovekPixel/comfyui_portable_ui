@@ -18,6 +18,7 @@ import gradio as gr
 from comfyui.cloud.client import cloud_client
 from comfyui.portable.client import portable_client
 from config_loader import config
+from workflows.gpt_2imgbatch2img_cloud import gpt_batchbatch2img_cloud, gpt_imgbatch2img_cloud
 from workflows.nbp_batchbatch2img_4x_api import nbp_batchbatch2img_4x_api
 from workflows.nbp_imgbatch2img_4x_api import nbp_imgbatch2img_4x_api
 from workflows.nbp_imgprompts2img_4x_api import nbp_imgprompts2img_4x_api
@@ -46,7 +47,7 @@ def _wire_generation(
 
 def build_ui() -> gr.Blocks:
     with gr.Blocks(title=config.ui_title) as demo:
-        with gr.Tab("Генерация обложек (NBP) 4x"):
+        with gr.Tab("Генерация обложек (NBP)"):
             with gr.Row():
                 with gr.Column():
                     base_image = gr.Image(type="pil", label="Исходное изображение")
@@ -68,7 +69,7 @@ def build_ui() -> gr.Blocks:
             )
             _wire_stop(stop_btn, stop_status)
 
-        with gr.Tab("Генерация адаптива воронки (NBP) 4x"):
+        with gr.Tab("Генерация адаптива воронки (NBP)"):
             with gr.Row():
                 with gr.Column():
                     input_photos_path_1 = gr.Textbox(
@@ -91,7 +92,7 @@ def build_ui() -> gr.Blocks:
             )
             _wire_stop(stop_btn, stop_status)
 
-        with gr.Tab("Генерация воронки (NBP) 4x"):
+        with gr.Tab("Генерация воронки (NBP)"):
             with gr.Row():
                 with gr.Column():
                     base_image_1 = gr.Image(type="pil", label="Исходное изображение 1")
@@ -112,6 +113,53 @@ def build_ui() -> gr.Blocks:
                 outputs=output,
             )
             _wire_stop(stop_btn, stop_status)
+
+        with gr.Tab("Генерация обложек (GPT) Cloud"):
+            with gr.Row():
+                with gr.Column():
+                    gpt_base_image = gr.Image(type="pil", label="Исходное изображение")
+                    gpt_input_photos_path = gr.Textbox(
+                        label="Путь к папке с фотографиями (C:\\Users\\Public...)",
+                    )
+                    gpt_output_result_folder = gr.Textbox(label="Название папки для результатов")
+                    gpt_prompt = gr.TextArea(label="Текст промпта")
+                    with gr.Row():
+                        gpt_run_btn = gr.Button("Сгенерировать", variant="primary")
+                        gpt_stop_btn = gr.Button("Stop", variant="stop")
+                    gpt_stop_status = gr.Textbox(label="Статус остановки", interactive=False, lines=1)
+                with gr.Column():
+                    gpt_output = gr.Textbox(label="Результат генерации тут", interactive=False)
+
+            _wire_generation(
+                gpt_run_btn,
+                gpt_imgbatch2img_cloud,
+                inputs=[gpt_base_image, gpt_input_photos_path, gpt_output_result_folder, gpt_prompt],
+                outputs=gpt_output,
+            )
+            _wire_stop(gpt_stop_btn, gpt_stop_status)
+
+        with gr.Tab("Генерация адаптива воронки (GPT) Cloud"):
+            with gr.Row():
+                with gr.Column():
+                    gpt_input_photos_path_1 = gr.Textbox(
+                        label="Путь к папке 1 (На основе имён изображений в этой папке будут создаваться папки с результатами)",
+                    )
+                    gpt_input_photos_path_2 = gr.Textbox(label="Путь к папке 2")
+                    gpt_batch_prompt = gr.TextArea(label="Текст промпта")
+                    with gr.Row():
+                        gpt_batch_run_btn = gr.Button("Сгенерировать", variant="primary")
+                        gpt_batch_stop_btn = gr.Button("Stop", variant="stop")
+                    gpt_batch_stop_status = gr.Textbox(label="Статус остановки", interactive=False, lines=1)
+                with gr.Column():
+                    gpt_batch_output = gr.Textbox(label="Результат генерации тут", interactive=False)
+
+            _wire_generation(
+                gpt_batch_run_btn,
+                gpt_batchbatch2img_cloud,
+                inputs=[gpt_input_photos_path_1, gpt_input_photos_path_2, gpt_batch_prompt],
+                outputs=gpt_batch_output,
+            )
+            _wire_stop(gpt_batch_stop_btn, gpt_batch_stop_status)
 
         with gr.Tab("Апскейл изображений (Cloud) SeedVR2"):
             with gr.Row():
